@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+        }
+        .upload-form input[type="file"] {
+            display: none;
+        }
+        .upload-form label {
+            background-color: #4285F4;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-form label:hover {
+            background-color: #3367D6;
+        }
+        .upload-form input[type="submit"] {
+            background-color: #4285F4;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #3367D6;
+        }
+        .message {
+            text-align: center;
+            margin-bottom: 20px;
+            color: red;
+        }
+        .result {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result img {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vehicle Classification</h1>
+        <form class="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-upload">
+            <label for="file-upload">Choose File</label>
+            <input type="submit" value="Predict">
+        </form>
+        <p class="message">{{ message }}</p>
+        {% if predicted_class %}
+            <div class="result">
+                <img src="{{ url_for('static', filename=image_file) }}" alt="Uploaded Image">
+                <p>Predicted class: {{ predicted_class }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

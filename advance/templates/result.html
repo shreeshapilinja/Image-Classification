@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Classification Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        .result {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result img {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vehicle Classification Result</h1>
+        <div class="result">
+            <img src="{{ image_file }}" alt="Uploaded Image">
+            <p>Predicted class: {{ predicted_class }}</p>
+        </div>
+    </div>
+</body>
+</html>
